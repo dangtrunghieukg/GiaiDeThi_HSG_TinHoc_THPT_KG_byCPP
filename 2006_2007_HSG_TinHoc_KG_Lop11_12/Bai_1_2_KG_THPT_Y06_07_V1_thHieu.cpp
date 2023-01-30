@@ -39,11 +39,11 @@ int DayXn(int x, string &strX){
 }
 
 int main(){
-    ifstream MyFile("TEST.INP");
+    ifstream MyReadFile("TEST.INP");
     ofstream MyOutFile("TEST.OUT");
     int a, b;
-    MyFile >> a;
-    MyFile >> b;
+    MyReadFile >> a;
+    MyReadFile >> b;
 
     vector<int> vtChieuDaiXn;
     vector<string> vtStringXn;
@@ -71,6 +71,6 @@ int main(){
             MyOutFile << vtStringXn[i] << endl;
         }
     }
-
+    MyReadFile.close();
     return 0;
 }
