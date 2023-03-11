@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(){
-    ifstream ReadFile("TAITRONG.INP");
+    ifstream ReadFile("TAITRONG2.INP");
     ofstream OutFile("TAITRONG.OUT");
     int N, startPos, endPos;
     int arrN[101][101];
@@ -32,14 +32,22 @@ int main(){
     vector<int> vtConDuong;
     vtConDuong.push_back(startPos);
     while (dangDi < endPos){
+        int columMax=0;
         for(int i=1; i<=N; i++){
-            if(taiTrongMax<arrN[dangDi][i]){
+            if(taiTrongMax<=arrN[dangDi][i]){
                 taiTrongMax = arrN[dangDi][i];
             }
         }
         for(int i=1; i<=N; i++){
+            if(taiTrongMax == arrN[dangDi][i]){
+                if(columMax<i){
+                    columMax =i;
+                }
+            }
+        }
+        for(int i=1; i<=N; i++){
             bool ok = true;
-            if (taiTrongMax == arrN[dangDi][i]){
+            if (taiTrongMax == arrN[dangDi][i] && i==columMax){
                 for(int x:vtConDuong){
                     if(x == i){
                         ok = false;
