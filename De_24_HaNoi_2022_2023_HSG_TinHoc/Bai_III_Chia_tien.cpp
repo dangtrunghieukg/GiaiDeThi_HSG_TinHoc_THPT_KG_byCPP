@@ -90,6 +90,11 @@ int main() {
             break;
         }
     }
+    if (daChiaOk == false) {
+        cout << "Khong the chia, tien dem dau tu: ";
+        WirteFile << 0;
+        Xuat(vtToTien);
+    }
     ReadFile.close();
     WirteFile.close();
     return 0;
