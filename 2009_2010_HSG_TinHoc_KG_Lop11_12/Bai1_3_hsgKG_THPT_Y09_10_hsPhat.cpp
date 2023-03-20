@@ -1,9 +1,10 @@
 #include <iostream>
 #include <fstream>
 using namespace std;
-int M[999][999] ;
+int M[9999][9999] ;
+int Tanso[999][999][999][999];
 int tam,i,n,m;
-bool co;
+bool co1, co2;
 int main()
 {
     ifstream Read ("DUONGBO.INP");
@@ -17,19 +18,23 @@ int main()
         Read >> M[i][1]; Read >> M[i][2];
     }
 
-     for (int i=1;i<=m;i++)
+    for (int i=1;i<=m;i++)
     {
-        co=false;
-        for (int j=1;j<=m;j++)
+        for(int j=1;j<=m;j++)
         {
-           if (i==j)  continue ;
-            else if(M[i][1]==M[j][1] || M[i][1]==M[j][2] && M[i][2]==M[j][1] || M[i][2]==M[j][2]  )
-                {
-                    co=true;
-                    break;
-                }
+        if(M[i][1]==M[j][1]) Tanso[i][1] ++;
         }
-        if (co==false ) cout << M[i][1] << " " << M[i][2] << endl;
     }
+    for (int i=1;i<=m;i++)
+    {
+        for(int j=1;j<=m;j++)
+        {
+        if(M[i][2]==M[j][2]) Tanso[i][1] ++;
+        }
+    }
+
+
+    for (int i=1;i<=m;i++)
+        cout << Tanso[i][2];
     return 0;
 }
